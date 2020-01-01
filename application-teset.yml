@@ -1,4 +1,0 @@
-spring:
-  profiles: test #测试环境
-  application:
-    name: spring-cloud-config-demo-test
