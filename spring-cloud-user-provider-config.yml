@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
 #开发环境
 ---
 server:
