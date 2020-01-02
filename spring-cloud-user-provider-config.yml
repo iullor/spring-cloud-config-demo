@@ -1,0 +1,104 @@
+spring:
+  profiles:
+    active: dev
+#开发环境
+---
+server:
+  port: 9000
+spring:
+  profiles: dev
+  #  redis:
+  #    host: 134.175.155.35 #redis地址
+  #    password:
+  #    port: 6379
+  application:
+    name: spring-cloud-user-provider
+  datasource: #数据库
+    username: test
+    password: 123456
+    url: jdbc:mysql://134.175.155.35:3306/db1?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  devtools:  #开发工具
+#    livereload: true
+mybatis:
+  mapper-locations: classpath:mapper/**
+logging:  #日志打印
+  level:
+    cn:
+      iullor:
+        mapper:
+          debug
+#打印spring启动的debug信息
+#debug: true
+
+#eureka 配置
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://192.168.1.102:7001/eureka
+      #单机配置
+      #defaultZone: http://192.168.40.35:7000/eureka
+      #集群配置
+      defaultZone: http://eureka7000.com:7000/eureka,http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  #修改实例的参数
+  instance:
+    instance-id: spring-cloud-user-provider-9000
+
+#配置服务的信息，必须加入actuator依赖
+info:
+  app.name: my-spring-cloud-demo
+  app.description: 用户服务9000
+  company.name: iullor
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+server:
+  port: 9001
+spring:
+  profiles: test
+  #  redis:
+  #    host: 134.175.155.35 #redis地址
+  #    password:
+  #    port: 6379
+  application:
+    name: spring-cloud-user-provider
+  datasource: #数据库
+    username: test
+    password: 123456
+    url: jdbc:mysql://134.175.155.35:3306/db2?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  devtools:  #开发工具
+#    livereload: true
+mybatis:
+  mapper-locations: classpath:mapper/**
+logging:  #日志打印
+  level:
+    cn:
+      iullor:
+        mapper:
+          debug
+#打印spring启动的debug信息
+#debug: true
+
+#eureka 配置
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://192.168.1.102:7001/eureka
+      #单机配置
+      #defaultZone: http://192.168.40.35:7000/eureka
+      #集群配置
+      defaultZone: http://eureka7000.com:7000/eureka,http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  #修改实例的参数
+  instance:
+    instance-id: spring-cloud-user-provider-9001
+#    prefer-ip-address: false
+
+#配置服务的信息，必须加入actuator依赖
+info:
+  app.name: my-spring-cloud-demo
+  app.description: 用户服务9001
+  company.name: iullor
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
